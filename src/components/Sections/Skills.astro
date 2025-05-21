@@ -1,5 +1,80 @@
 ---
-import Section from "@/components/Section.astro"
+import Section from "@/components/Section.astro";
+import { skills } from '@cv'; // Corrected import path
 ---
 
-<Section title="Skills"></Section>
+<Section title="Skills & Expertise">
+  <div class="skills-container">
+    {
+      skills.map((skillCategory) => (
+        <article class="skill-category">
+          <h3>{skillCategory.name}</h3>
+          {skillCategory.keywords && skillCategory.keywords.length > 0 && (
+            <ul class="keywords-list">
+              {skillCategory.keywords.map((keyword) => (
+                <li class="keyword-item">{keyword}</li>
+              ))}
+            </ul>
+          )}
+        </article>
+      ))
+    }
+  </div>
+</Section>
+
+<style>
+  .skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive columns */
+    gap: 2rem; /* Space between skill category cards */
+  }
+
+  .skill-category {
+    background-color: #f9fafb; /* Light background for card */
+    border: 1px solid #e5e7eb; /* Softer border */
+    border-radius: 0.5rem; /* Rounded corners */
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+  }
+
+  .skill-category h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f2937; /* Darker heading color */
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #d1d5db; /* Underline for category name */
+    padding-bottom: 0.5rem;
+  }
+
+  .keywords-list {
+    list-style: none; /* Remove default bullets */
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap; /* Allow keywords to wrap */
+    gap: 0.75rem; /* Space between keyword tags */
+  }
+
+  .keyword-item {
+    background-color: #e0e7ff; /* Light blue/indigo background for tags */
+    color: #3730a3; /* Indigo text color for tags */
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 0.4rem 0.8rem; /* Padding within tags */
+    border-radius: 0.375rem; /* Rounded tags */
+    white-space: nowrap; /* Prevent tags from breaking mid-word */
+  }
+  
+  /* Alternate tag styling for variety, if desired */
+  .skill-category:nth-of-type(2n) .keyword-item {
+    background-color: #dcfce7; /* Light green */
+    color: #166534; /* Dark green */
+  }
+  .skill-category:nth-of-type(3n) .keyword-item {
+    background-color: #feefc7; /* Light orange */
+    color: #92400e; /* Dark orange */
+  }
+   .skill-category:nth-of-type(4n) .keyword-item {
+    background-color: #ffe4e6; /* Light red */
+    color: #9f1239; /* Dark red */
+  }
+</style>

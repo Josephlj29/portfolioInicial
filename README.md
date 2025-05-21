@@ -1,54 +1,89 @@
-# Astro Starter Kit: Basics
+# Portfolio - Alex C. Developer
 
-```sh
-npm create astro@latest -- --template basics
+This is the source code for the personal portfolio website of Alex C. Developer, a Mid-Level Fullstack Developer with experience in .NET, Angular, Material Design, React, and AI integration.
+
+The portfolio is built with [Astro](https://astro.build/).
+
+## ✨ Features
+
+*   Clean and modern design, inspired by current web development trends.
+*   Sections: About Me, Skills, Experience, Projects, Education, and Contact.
+*   Content driven by `cv.json` for easy updates.
+*   Responsive design for optimal viewing on various devices.
+
+## 🛠️ Technologies Used
+
+*   **Framework**: Astro
+*   **Frontend**:
+    *   HTML, CSS, JavaScript
+    *   (Conceptual experience reflected in portfolio content: Angular, React, Material Design)
+*   **Backend**:
+    *   (Conceptual experience reflected in portfolio content: .NET Core, C#, ASP.NET Web API)
+*   **AI Integration**:
+    *   (Conceptual experience reflected in portfolio content: Python, Scikit-learn, NLP API integration)
+*   **Styling**: Component-specific CSS, global styles.
+*   **Deployment**: Ready for deployment on platforms like Netlify, Vercel, or GitHub Pages.
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+*   Node.js (LTS version recommended)
+*   pnpm (or npm/yarn if you prefer, but `pnpm-lock.yaml` is provided)
+
+### Installation
+
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/your-username/your-repo-name.git
+    cd your-repo-name
+    ```
+2.  Install dependencies:
+    ```bash
+    pnpm install
+    ```
+
+### Running in Development Mode
+
+To start the development server:
+
+```bash
+pnpm dev
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+This will typically start the server on `http://localhost:4321`.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+### Building for Production
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+To build the static site for production:
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+```bash
+pnpm build
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+The output will be in the `dist/` directory.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## 📄 `cv.json`
 
-Any static assets, like images, can be placed in the `public/` directory.
+The portfolio content (personal details, experience, projects, etc.) is primarily managed through the `cv.json` file located in the root directory. Modify this file to update the portfolio information.
 
-## 🧞 Commands
+## 🧪 Testing
 
-All commands are run from the root of the project, from a terminal:
+Unit tests for JavaScript utility functions (e.g., date formatting, data sorting) are located in `src/utils/` and use a Vitest/Jest-like syntax (e.g., `*.test.js`).
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+To run tests (conceptual, requires test runner setup like Vitest):
+```bash
+# pnpm test # Or your configured test script
+```
 
-## 👀 Want to learn more?
+Currently, tests cover:
+- `formatDateRange()`: Ensures correct formatting of date ranges for experience and education.
+- `sortWorkExperiences()`: Ensures correct chronological sorting of work experiences.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome! Please feel free to check the [issues page](https://github.com/your-username/your-repo-name/issues).
+
+## 📝 License
+
+This project is currently unlicensed. You are free to add a license like MIT if you wish.

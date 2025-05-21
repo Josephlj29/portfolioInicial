@@ -1,32 +1,42 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Experience from '@/components/Sections/Experience.astro';
-import Education from '@/components/Sections/Education.astro';
-import Skills from '@/components/Sections/Skills.astro';
-import Projects from '@/components/Sections/Projects.astro';
 import Hero from '@/components/Sections/Hero.astro';
 import About from '@/components/Sections/About.astro';
+import Skills from '@/components/Sections/Skills.astro';
+import Experience from '@/components/Sections/Experience.astro';
+import Projects from '@/components/Sections/Projects.astro';
+import Education from '@/components/Sections/Education.astro';
+import Contact from '@/components/Sections/Contact.astro'; // Added Contact import
 import KeyboardManager from '@/components/KeyboardManager.astro';
 ---
 
-<Layout title="Portfolio Inicial">
+<Layout title="Alex C. Developer - Portfolio"> {/* Updated title */}
 	<main>
 		<Hero/>
 		<About/>
-		<Experience/>
-		<Education/>
-		<Projects/>
 		<Skills/>
+		<Experience/>
+		<Projects/>
+		<Education/>
+		<Contact/> {/* Added Contact section */}
 	</main>
 	<KeyboardManager/>
 </Layout>
 
 <style>
-	main{
-		padding: 4rem;
-		margin:auto;
-		
+	main {
+		padding: 2rem; /* Adjusted padding for overall content within main-wrapper */
+		/* margin: auto; /* Removed as main-wrapper in Layout.astro handles this */
+		display: flex;
+		flex-direction: column;
+		gap: 3rem; /* Consistent spacing between sections */
+	}
 
-
+	/* Responsive adjustments for main padding if needed */
+	@media (max-width: 768px) {
+		main {
+			padding: 1rem; /* Reduced padding on smaller screens */
+			gap: 2rem; /* Reduced gap on smaller screens */
+		}
 	}
 </style>

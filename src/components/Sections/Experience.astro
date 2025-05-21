@@ -1,5 +1,99 @@
 ---
-import Section from "@/components/Section.astro"
+import Section from "@/components/Section.astro";
+import { work } from '@cv'; // Corrected import path
+import { formatDateRange, sortWorkExperiences } from '@/utils/dateFormatter.js'; // Import from utils
+
+const sortedWork = sortWorkExperiences(work);
 ---
 
-<Section title="Experience"></Section>
+<Section title="Work Experience">
+  <div class="experience-list">
+    {
+      sortedWork.map((job) => (
+        <article class="experience-item">
+          <header>
+            <h3>{job.name}</h3>
+            <p class="position">{job.position}</p>
+            <p class="date-range">{formatDateRange(job.startDate, job.endDate)}</p>
+          </header>
+          {job.summary && <p class="summary">{job.summary}</p>}
+          {job.highlights && job.highlights.length > 0 && (
+            <ul class="highlights">
+              {job.highlights.map((highlight) => (
+                <li>{highlight}</li>
+              ))}
+            </ul>
+          )}
+        </article>
+      ))
+    }
+  </div>
+</Section>
+
+<style>
+  .experience-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem; /* Space between job entries */
+  }
+
+  .experience-item {
+    border-left: 3px solid #4a5568; /* Accent border */
+    padding-left: 1.5rem;
+    position: relative; /* For potential future timeline styling */
+  }
+
+  .experience-item header h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 0.25rem;
+  }
+
+  .experience-item .position {
+    font-size: 1.1rem;
+    font-style: italic;
+    color: #4a5568;
+    margin-bottom: 0.25rem;
+  }
+
+  .experience-item .date-range {
+    font-size: 0.9rem;
+    color: #718096; /* Lighter gray for dates */
+    margin-bottom: 0.75rem;
+  }
+
+  .summary {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #4a5568;
+    margin-bottom: 0.75rem;
+    text-align: justify;
+  }
+
+  .highlights {
+    list-style-type: disc; /* Standard bullets */
+    padding-left: 1.5rem; /* Indent bullets */
+    font-size: 0.95rem;
+    color: #4a5568;
+  }
+
+  .highlights li {
+    margin-bottom: 0.4rem;
+    line-height: 1.5;
+  }
+  
+  /* Optional: Add a small circle on the timeline */
+  .experience-item::before {
+    content: '';
+    position: absolute;
+    left: -9px; /* Adjust to align with the border */
+    top: 5px; /* Adjust vertical alignment */
+    width: 15px;
+    height: 15px;
+    background-color: white;
+    border: 3px solid #4a5568;
+    border-radius: 50%;
+    z-index: 1;
+  }
+</style>

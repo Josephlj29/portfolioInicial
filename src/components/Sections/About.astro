@@ -1,5 +1,28 @@
 ---
-import Section from "@/components/Section.astro"
+import Section from "@/components/Section.astro";
+import { basics } from '@cv'; // Corrected import path
+
+const { summary } = basics;
 ---
 
-<Section title="About"></Section>
+<Section title="About Me">
+  <article class="about-content">
+    <p>{summary}</p>
+  </article>
+</Section>
+
+<style>
+  .about-content p {
+    font-size: 1.1rem;
+    line-height: 1.7; /* Increased for better readability */
+    color: #333; /* Darker text for content */
+    text-align: justify; /* Justify text for a cleaner look, optional */
+    margin-bottom: 1rem; /* Space below paragraph */
+  }
+
+  /* Optional: Add some padding to the section if not handled by Section.astro */
+  :global(section[title="About Me"]) { /* Targeting the Section component via its prop if needed */
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+</style>
