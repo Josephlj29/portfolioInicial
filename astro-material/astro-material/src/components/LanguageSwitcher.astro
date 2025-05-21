@@ -1,0 +1,34 @@
+---
+// LanguageSwitcher.astro
+const { currentLocale, Astro } = Astro;
+const locales = Astro.config.i18n.locales;
+const defaultLocale = Astro.config.i18n.defaultLocale;
+
+// For simplicity, this switcher links to the root of each language.
+// A more advanced version would try to find the equivalent translated page.
+---
+<nav aria-label="Language selection" class="flex space-x-2 text-sm">
+  {locales.map((locale) => {
+    const isActive = locale === currentLocale;
+    // Construct the path: prefix with '/' and locale.
+    // For the default locale, if prefixDefaultLocale is false in config, it might not have a prefix.
+    // However, our config `prefixDefaultLocale: true` ensures all locales, including default, are prefixed.
+    const path = `/${locale}/`;
+
+    return (
+      <a
+        href={path}
+        class:list={[
+          "px-3 py-1 rounded-md transition-colors duration-150 ease-in-out", // Base and transition
+          "focus:outline-none focus:ring-1 focus:ring-offset-1 focus:ring-white/70 dark:focus:ring-offset-blue-800 dark:focus:ring-yellow-300/70", // Existing Focus style
+          isActive 
+            ? "bg-white/20 dark:bg-black/20 text-white dark:text-yellow-300 font-semibold" // Intended active styling
+            : "hover:bg-white/10 dark:hover:bg-black/10 text-blue-100 dark:text-gray-300 hover:text-white dark:hover:text-yellow-200 font-medium", // Intended inactive styling
+        ]}
+        aria-current={isActive ? "page" : false}
+      >
+        {locale.toUpperCase()}
+      </a>
+    );
+  })}
+</div>

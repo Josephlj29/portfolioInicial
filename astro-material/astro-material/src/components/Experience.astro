@@ -1,0 +1,61 @@
+---
+import ExperienceItem from './ExperienceItem.astro';
+
+export interface ExperienceEntry {
+  title: string;
+  organization: string;
+  duration: string;
+  description: string;
+}
+
+export interface Props {
+  sectionTitle?: string;
+  experiences?: ExperienceEntry[];
+}
+
+const {
+  sectionTitle = "Experience", // Default title
+  experiences = [ // Default placeholder experiences
+    {
+      title: "Senior Software Engineer",
+      organization: "Innovatech Solutions",
+      duration: "Jan 2022 - Present",
+      description: "Led development of key features for a flagship product, mentored junior engineers, and improved system performance by 20%. Worked extensively with modern JavaScript frameworks and cloud technologies."
+    },
+    {
+      title: "Software Developer",
+      organization: "NextGen Apps",
+      duration: "Jun 2019 - Dec 2021",
+      description: "Contributed to the full software development lifecycle of several client projects. Specialized in front-end development, creating responsive and user-friendly interfaces. Received award for outstanding collaboration."
+    },
+    {
+      title: "Web Development Intern",
+      organization: "CodeStart Inc.",
+      duration: "May 2018 - Aug 2018",
+      description: "Assisted senior developers in various web development tasks, including testing, debugging, and documentation. Gained foundational experience in HTML, CSS, and JavaScript."
+    }
+  ]
+} = Astro.props;
+---
+<section id="experience" class="py-16 md:py-24 bg-gray-100 dark:bg-gray-800">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 dark:text-white mb-12">
+      {sectionTitle}
+    </h2>
+    <div class="space-y-8">
+      {experiences.map(exp => (
+        <ExperienceItem
+          title={exp.title}
+          organization={exp.organization}
+          duration={exp.duration}
+          description={exp.description}
+        />
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  /* The section uses an alternating background color from the AboutMe section. */
+  /* Spacing between ExperienceItem cards is handled by space-y-8 on the parent div. */
+</style>

@@ -1,0 +1,41 @@
+---
+export interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+
+const currentYear = new Date().getFullYear();
+---
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="description" content="Astro description" />
+	<meta name="viewport" content="width=device-width" />
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+	<meta name="generator" content={Astro.generator} />
+	<title>{title}</title>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white font-sans">
+	<slot name="header" />
+	<main class="container mx-auto px-4 py-8">
+		<slot />
+	</main>
+	<slot name="footer" />
+
+	<script src="/scripts/theme-toggle.js"></script>
+
+	<style is:global>
+		/* Basic reset and global styles if needed */
+		body {
+			display: flex;
+			flex-direction: column;
+			min-height: 100vh;
+		}
+		main {
+			flex-grow: 1;
+		}
+	</style>
+</body>
+</html>

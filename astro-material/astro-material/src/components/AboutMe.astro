@@ -1,0 +1,49 @@
+---
+export interface Props {
+  title?: string;
+  narrative?: string;
+  skills?: string[]; // Array of strings for skills
+  skillsTitle?: string;
+}
+
+const {
+  title = "About Me", // Default title
+  narrative = "Hello! I'm a passionate and dedicated professional with a strong background in web development and design. I thrive on creating elegant, efficient, and user-friendly digital experiences. My journey in tech has been driven by a constant curiosity and a desire to solve real-world problems with innovative solutions. I believe in the power of collaboration and continuous learning to achieve excellence.",
+  skills = ["Web Development", "UI/UX Design", "Astro", "Tailwind CSS", "Problem Solving"],
+  skillsTitle = "Key Skills"
+} = Astro.props;
+---
+<section id="about" class="py-16 md:py-24 bg-white dark:bg-gray-900">
+  <div class="container mx-auto px-4">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
+        {title}
+      </h2>
+      <div class="bg-gray-50 dark:bg-gray-800 p-6 sm:p-8 rounded-xl shadow-xl">
+        <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-8 text-left">
+          {narrative}
+        </p>
+        
+        {skills && skills.length > 0 && (
+          <div class="text-left">
+            <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-4">{skillsTitle}</h3>
+            <ul class="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-2">
+              {skills.map(skill => (
+                <li class="flex items-center text-gray-600 dark:text-gray-400">
+                  <svg class="w-4 h-4 mr-2 text-blue-500 dark:text-blue-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                  {skill}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Using Tailwind's shadow-xl on the card-like div for Material Design elevation. */
+  /* The overall section uses alternating background colors (white/gray-900 for light/dark) */
+  /* to differentiate from the Hero section. */
+</style>

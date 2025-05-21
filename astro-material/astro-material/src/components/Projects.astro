@@ -1,0 +1,66 @@
+---
+import ProjectCard from './ProjectCard.astro';
+
+export interface Project {
+  title: string;
+  description: string;
+  imageUrl?: string;
+  projectUrl: string;
+  tags?: string[];
+}
+
+export interface Props {
+  sectionTitle?: string;
+  projects?: Project[];
+}
+
+const {
+  sectionTitle = "My Projects", // Default title
+  projects = [ // Default placeholder projects
+    {
+      title: "E-commerce Platform",
+      description: "A full-featured e-commerce platform with a modern UI, product management, and payment integration. Built with performance and scalability in mind.",
+      imageUrl: "https://via.placeholder.com/600x400.png?text=E-commerce+Site",
+      projectUrl: "#", // Placeholder URL
+      tags: ["React", "Node.js", "MongoDB", "Tailwind CSS"]
+    },
+    {
+      title: "Portfolio Website",
+      description: "A personal portfolio website to showcase skills and projects. Features a clean design, smooth animations, and is fully responsive.",
+      imageUrl: "https://via.placeholder.com/600x400.png?text=Portfolio+Mockup",
+      projectUrl: "#", // Placeholder URL
+      tags: ["Astro", "JavaScript", "Material Design", "SEO"]
+    },
+    {
+      title: "Task Management App",
+      description: "A collaborative task management application to help teams organize and track their work effectively. Includes features like boards, lists, and cards.",
+      imageUrl: "https://via.placeholder.com/600x400.png?text=Task+App+UI",
+      projectUrl: "#", // Placeholder URL
+      tags: ["Vue.js", "Firebase", "Vuetify"]
+    }
+  ]
+} = Astro.props;
+---
+<section id="projects" class="py-16 md:py-24 bg-white dark:bg-gray-900">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 dark:text-white mb-12">
+      {sectionTitle}
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      {projects.map(project => (
+        <ProjectCard
+          title={project.title}
+          description={project.description}
+          imageUrl={project.imageUrl}
+          projectUrl={project.projectUrl}
+          tags={project.tags}
+        />
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Section background alternates from the Experience section. */
+  /* Grid styling ensures responsive layout for project cards. */
+</style>

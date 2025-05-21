@@ -1,0 +1,31 @@
+---
+// This page a_cts as a redirect to the default locale.
+// Astro's i18n routing with `prefixDefaultLocale: true` should handle this,
+// but having a root index.astro helps the build process identify the root.
+// We can explicitly redirect if needed, or let Astro's default behavior manage it.
+
+// Option 1: Let Astro's default i18n routing handle it (often works if the file just exists)
+// No specific code needed in many cases, just the presence of this file.
+
+// Option 2: Explicit redirect (more robust if Astro doesn't auto-redirect)
+// import { Astro } from 'astro';
+// const defaultLocale = Astro.config.i18n.defaultLocale;
+// return Astro.redirect(`/${defaultLocale}/`);
+
+// For now, creating a minimal page content. Astro should still redirect.
+// If not, explicit redirect will be added.
+---
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="0;url=/en/">
+  <title>Redirecting...</title>
+  <link rel="canonical" href="/en/" />
+</head>
+<body>
+  <p>If you are not redirected automatically, follow this <a href='/en/'>link to the English homepage</a>.</p>
+</body>
+</html>
+<style>
+  body { font-family: sans-serif; text-align: center; padding-top: 50px; }
+</style>

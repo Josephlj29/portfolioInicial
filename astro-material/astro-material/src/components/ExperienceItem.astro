@@ -1,0 +1,26 @@
+---
+export interface Props {
+  title: string;
+  organization: string;
+  duration: string;
+  description: string; // Can be a simple string, or you might want to allow HTML later
+}
+
+const { title, organization, duration, description } = Astro.props;
+---
+<div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out"> {/* Changed dark:bg-gray-800 to dark:bg-gray-700 */}
+  <h3 class="text-xl font-semibold text-blue-600 dark:text-blue-400 mb-1">{title}</h3>
+  <p class="text-md font-medium text-gray-700 dark:text-gray-300 mb-1">{organization}</p>
+  <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">{duration}</p>
+  <div class="text-gray-600 dark:text-gray-300 prose prose-sm max-w-none">
+    <!-- Using prose for potentially richer description formatting if needed -->
+    <p>{description}</p> 
+    <!-- If description needs to be HTML: <Fragment set:html={description} /> -->
+  </div>
+</div>
+
+<style>
+  /* Ensure prose styles don't override everything too much, or scope them. */
+  /* For simple text, the <p> tag is fine. If complex HTML is passed, Tailwind prose helps. */
+  /* Shadow-lg and hover:shadow-xl provide Material-like elevation. */
+</style>

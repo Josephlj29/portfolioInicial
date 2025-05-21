@@ -1,0 +1,14 @@
+---
+import Layout from '../../../layouts/Layout.astro'; # Adjusted path
+import Header from '../../../components/Header.astro'; # Adjusted path
+import Footer from '../../../components/Footer.astro'; # Adjusted path
+---
+<Layout title=Welcome - English>
+  <Fragment slot=header>
+    <Header />
+  </Fragment>
+  <h1 class='text-4xl font-bold text-center my-8'>Hello World (English)</h1>
+  <Fragment slot=footer>
+    <Footer />
+  </Fragment>
+</Layout>
