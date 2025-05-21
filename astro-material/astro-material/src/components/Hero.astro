@@ -1,0 +1,67 @@
+---
+// Props for future customization, e.g., name, tagline, imageSrc
+export interface Props {
+  name?: string;
+  headline?: string;
+  tagline?: string;
+  imageSrc?: string;
+  cta1Text?: string;
+  cta1Link?: string;
+  cta2Text?: string;
+  cta2Link?: string;
+}
+
+const {
+  name = "Your Name",
+  headline = `Hi, I'm ${name}`,
+  tagline = "I build amazing web experiences. Passionate about design, technology, and creating impactful solutions.",
+  imageSrc = "https://via.placeholder.com/400x400.png?text=Professional+Photo", // Placeholder image
+  cta1Text = "View Projects",
+  cta1Link = "#projects", // Placeholder link
+  cta2Text = "Contact Me",
+  cta2Link = "#contact" // Placeholder link
+} = Astro.props;
+---
+<section class="bg-gray-100 dark:bg-gray-800 py-16 md:py-24">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-col md:flex-row items-center">
+      <!-- Text Content -->
+      <div class="md:w-1/2 lg:w-3/5 text-center md:text-left mb-10 md:mb-0 md:pr-10">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-4">
+          {headline}
+        </h1>
+        <p class="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-8">
+          {tagline}
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
+          <a
+            href={cta1Link}
+            class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:shadow-lg transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+          >
+            {cta1Text}
+          </a>
+          <a
+            href={cta2Link}
+            class="bg-transparent hover:bg-gray-200 dark:hover:bg-gray-700 text-blue-600 dark:text-blue-300 dark:hover:text-blue-200 font-semibold py-3 px-8 border border-blue-600 dark:border-blue-400 rounded-lg hover:shadow-md transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+          >
+            {cta2Text}
+          </a>
+        </div>
+      </div>
+      <!-- Image -->
+      <div class="md:w-1/2 lg:w-2/5 flex justify-center md:justify-end">
+        <img
+          src={imageSrc}
+          alt="Professional photo of {name}"
+          class="rounded-full w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-cover shadow-xl border-4 border-white dark:border-gray-700"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Optional: Add any specific style overrides or complex styles here if Tailwind isn't enough */
+  /* Example: Material Design elevation for buttons could be more nuanced if needed */
+  /* For Material-like button elevation, Tailwind's shadow-md and hover:shadow-lg are good approximations. */
+</style>
